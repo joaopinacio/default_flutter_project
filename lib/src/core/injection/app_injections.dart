@@ -22,10 +22,7 @@ class AppInjections extends BaseInjection {
               enableLogging: kDebugMode,
             ),
           ),
-          (i) => i.registerSingletonAsync<IAuthService>(() async {
-            final storage = await i.getAsync<AppStorage>();
-            return AuthService(storage);
-          }),
+          (i) async => i.registerSingleton<IAuthService>(AuthService(await i.getAsync())),
         ],
       );
 }
