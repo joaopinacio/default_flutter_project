@@ -33,6 +33,6 @@ abstract class IDependencyInjector {
   /// Check if a type is registered
   bool isRegistered<T extends Object>();
 
-  /// Wait for all async dependencies to be ready
+  /// Wait for all async registrations to complete
   Future<void> allReady({Duration? timeout, bool ignorePendingAsyncCreation = false});
 }

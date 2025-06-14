@@ -1,4 +1,5 @@
 import 'package:default_flutter_project/src/core/router/app_routes.dart';
+import 'package:default_flutter_project/src/core/router/config/app_router.dart';
 import 'package:default_flutter_project/src/features/home/home_route_constants.dart';
 
 /// Navigation controller for the Home feature
@@ -9,7 +10,7 @@ class HomeNavigation {
   static const HomeNavigation instance = HomeNavigation._();
 
   /// Get the singleton router instance
-  static get _router => AppRoutes.router;
+  static IAppRouter get _router => AppRoutes.router;
 
   /// Navigate to home with replacement (clear stack)
   static void goToHome() => _router.pushReplacementNamed(HomeRouteConstants.homeName);

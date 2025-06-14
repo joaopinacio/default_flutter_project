@@ -1,6 +1,7 @@
 import 'package:default_flutter_project/src/core/router/config/app_router_logger.dart';
 import 'package:default_flutter_project/src/core/router/config/base_app_route.dart';
 import 'package:default_flutter_project/src/features/home/home_routes.dart';
+import 'package:default_flutter_project/src/features/login/login_routes.dart';
 import 'package:flutter/material.dart';
 
 import 'config/app_router.dart';
@@ -18,6 +19,7 @@ class AppRoutes {
 
   /// List of all app routes using our abstraction
   static final List<BaseAppRoute> _routes = [
+    LoginRoutes(),
     HomeRoutes(),
     // Add more routes here
   ];
