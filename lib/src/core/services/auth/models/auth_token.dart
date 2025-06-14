@@ -1,7 +1,9 @@
+import 'package:equatable/equatable.dart';
+
 import 'user_model.dart';
 
 /// Model representing authentication tokens and user data
-class AuthToken {
+class AuthToken extends Equatable {
   const AuthToken({required this.accessToken, required this.refreshToken, required this.user});
 
   final String accessToken;
@@ -37,19 +39,5 @@ class AuthToken {
   }
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    return other is AuthToken &&
-        other.accessToken == accessToken &&
-        other.refreshToken == refreshToken &&
-        other.user == user;
-  }
-
-  @override
-  int get hashCode => accessToken.hashCode ^ refreshToken.hashCode ^ user.hashCode;
-
-  @override
-  String toString() {
-    return 'AuthToken(accessToken: ${accessToken.substring(0, 10)}..., refreshToken: ${refreshToken.substring(0, 10)}..., user: $user)';
-  }
+  List<Object?> get props => [accessToken, refreshToken, user];
 }

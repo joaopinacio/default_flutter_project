@@ -1,5 +1,7 @@
+import 'package:equatable/equatable.dart';
+
 /// Model representing a user
-class UserModel {
+class UserModel extends Equatable {
   const UserModel({required this.id, required this.name, required this.email});
 
   final String id;
@@ -22,16 +24,5 @@ class UserModel {
   }
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    return other is UserModel && other.id == id && other.name == name && other.email == email;
-  }
-
-  @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ email.hashCode;
-
-  @override
-  String toString() {
-    return 'UserModel(id: $id, name: $name, email: $email)';
-  }
+  List<Object?> get props => [id, name, email];
 }
