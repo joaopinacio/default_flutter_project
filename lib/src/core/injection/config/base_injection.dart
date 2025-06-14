@@ -12,7 +12,7 @@ abstract class BaseInjection {
   final IDependencyInjector injector;
 
   Future<void> setUp() async {
-    log('\x1B[92mSetting up ${scopeName.toUpperCase()} injections');
+    log('🚀 \x1B[92mSetting up ${scopeName.toUpperCase()} injections');
 
     injector.pushNewScope(
       scopeName: scopeName,
@@ -39,7 +39,7 @@ abstract class BaseInjection {
   }
 
   Future<void> tearDown() async {
-    log('\x1B[91mTearing down ${scopeName.toUpperCase()} injections');
+    log('🧹 \x1B[91mTearing down ${scopeName.toUpperCase()} injections');
     await injector.popScope();
   }
 }

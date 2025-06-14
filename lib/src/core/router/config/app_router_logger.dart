@@ -9,7 +9,7 @@ class AppRouteLogger extends NavigatorObserver {
     super.didPush(route, previousRoute);
 
     // Add your logging logic here
-    log('Navigated to: ${route.settings.name}');
+    log('📍 \x1B[94mNavigated to: ${route.settings.name}');
   }
 
   @override
@@ -17,6 +17,6 @@ class AppRouteLogger extends NavigatorObserver {
     super.didPop(route, previousRoute);
 
     // Add your logging logic here
-    log('Popped from: ${route.settings.name}');
+    log('⬅️ \x1B[93mPopped from: ${route.settings.name}');
   }
 }
