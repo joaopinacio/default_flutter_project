@@ -6,5 +6,5 @@ class HomeRouteConstants {
   static const String homeName = 'home';
 
   // Route paths
-  static const String homePath = '/home';
+  static const String homePath = '/';
 }

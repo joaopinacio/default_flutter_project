@@ -15,14 +15,17 @@ class AppInjections extends BaseInjection {
     : super(
         scopeName: 'App',
         registrations: [
-          (i) async => i.registerSingleton<AppStorage>(await AppStorageImpl.create()),
+          (i) => i.registerSingletonAsync<AppStorage>(() => AppStorageImpl.create()),
           (i) => i.registerSingleton<IHttpClient>(
             HttpClientFactory.createClient(
               config: HttpConfig(baseUrl: EnviromentUrlsPath.baseUrl),
               enableLogging: kDebugMode,
             ),
           ),
-          (i) => i.registerSingleton<IAuthService>(AuthService(i.get())),
+          (i) => i.registerSingletonAsync<IAuthService>(() async {
+            final storage = await i.getAsync<AppStorage>();
+            return AuthService(storage);
+          }),
         ],
       );
 }

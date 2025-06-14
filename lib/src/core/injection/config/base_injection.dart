@@ -22,6 +22,20 @@ abstract class BaseInjection {
         }
       },
     );
+
+    // Wait for all async registrations to be ready
+    await _waitForAsyncDependencies();
+  }
+
+  /// Wait for all async dependencies to be ready
+  Future<void> _waitForAsyncDependencies() async {
+    try {
+      // Use GetIt's allReady to wait for all async singletons to be ready
+      await injector.allReady();
+    } catch (e) {
+      log('⚠️ Error waiting for async dependencies: $e');
+      rethrow;
+    }
   }
 
   Future<void> tearDown() async {

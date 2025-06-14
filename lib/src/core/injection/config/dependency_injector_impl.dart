@@ -27,8 +27,18 @@ class DependencyInjector implements IDependencyInjector {
   }
 
   @override
+  void registerSingletonAsync<T extends Object>(Future<T> Function() factory) {
+    _getIt.registerSingletonAsync<T>(factory);
+  }
+
+  @override
   void registerLazySingleton<T extends Object>(T Function() factory) {
     _getIt.registerLazySingleton<T>(factory);
+  }
+
+  @override
+  void registerLazySingletonAsync<T extends Object>(Future<T> Function() factory) {
+    _getIt.registerLazySingletonAsync<T>(factory);
   }
 
   @override
@@ -37,12 +47,27 @@ class DependencyInjector implements IDependencyInjector {
   }
 
   @override
+  void registerFactoryAsync<T extends Object>(Future<T> Function() factory) {
+    _getIt.registerFactoryAsync<T>(factory);
+  }
+
+  @override
   T get<T extends Object>() {
     return _getIt.get<T>();
   }
 
   @override
+  Future<T> getAsync<T extends Object>() {
+    return _getIt.getAsync<T>();
+  }
+
+  @override
   bool isRegistered<T extends Object>() {
     return _getIt.isRegistered<T>();
+  }
+
+  @override
+  Future<void> allReady({Duration? timeout, bool ignorePendingAsyncCreation = false}) {
+    return _getIt.allReady(timeout: timeout, ignorePendingAsyncCreation: ignorePendingAsyncCreation);
   }
 }
