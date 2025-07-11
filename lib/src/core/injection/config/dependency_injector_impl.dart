@@ -22,6 +22,11 @@ class DependencyInjector implements IDependencyInjector {
   }
 
   @override
+  Future<void> dropScope(String scopeName) async {
+    await _getIt.dropScope(scopeName);
+  }
+
+  @override
   void registerSingleton<T extends Object>(T instance) {
     _getIt.registerSingleton<T>(instance);
   }

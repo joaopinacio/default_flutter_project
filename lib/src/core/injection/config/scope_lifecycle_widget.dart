@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 /// disposes of it when the widget is destroyed.
 class ScopeLifecycleWidget extends StatefulWidget {
   const ScopeLifecycleWidget({
-    required this.child,
+    required this.builder,
     required this.onInit,
     required this.onDispose,
     this.scopeName,
@@ -16,7 +16,7 @@ class ScopeLifecycleWidget extends StatefulWidget {
   });
 
   /// The widget to wrap with scope lifecycle management
-  final Widget child;
+  final Widget Function(BuildContext context) builder;
 
   /// Called when the widget is initialized (equivalent to setUp)
   final Future<void> Function() onInit;
@@ -77,6 +77,6 @@ class _ScopeLifecycleWidgetState extends State<ScopeLifecycleWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.child;
+    return widget.builder(context);
   }
 }

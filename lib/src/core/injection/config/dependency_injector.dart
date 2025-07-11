@@ -6,6 +6,9 @@ abstract class IDependencyInjector {
   /// Pop the current scope
   Future<void> popScope();
 
+  /// Drop the scope with the given name
+  Future<void> dropScope(String scopeName);
+
   /// Register a singleton instance
   void registerSingleton<T extends Object>(T instance);
 

@@ -35,7 +35,7 @@ class AppRoute implements BaseAppRoute {
            scopeName: injector.scopeName,
            onDispose: injector.tearDown,
            onInit: injector.setUp,
-           child: builder(context, pathParameters, queryParameters, extra),
+           builder: (context) => builder(context, pathParameters, queryParameters, extra),
          );
        });
 

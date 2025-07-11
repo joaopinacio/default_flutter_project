@@ -40,6 +40,6 @@ abstract class BaseInjection {
 
   Future<void> tearDown() async {
     log('🧹 \x1B[91mTearing down ${scopeName.toUpperCase()} injections');
-    await injector.popScope();
+    await injector.dropScope(scopeName);
   }
 }
